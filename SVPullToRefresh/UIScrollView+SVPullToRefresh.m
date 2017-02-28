@@ -436,6 +436,14 @@ static char UIScrollViewPullToRefreshView;
                 break;
         }
     }
+    
+    CGFloat realOffset = self.originalTopInset + self.scrollView.contentOffset.y;
+    if (realOffset >= 0) {
+        self.alpha = 0;
+    }
+    else {
+        self.alpha = -realOffset / self.bounds.size.height;
+    }
 }
 
 #pragma mark - Getters
